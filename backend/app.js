@@ -1,9 +1,11 @@
 const express = require('express')
 const cors = require('cors')
-const bodyParser = require('boday-parser')
+const bodyParser = require('body-parser')
+const mongoose = require('mongoose')
 
-const { port, dbURI } = require('./config/environment')
-const path = require('path')
+const { port, dbURI } = require('./config/dev')
+
+const termsControler = require('./controllers/termsControl')
 
 const app = express()
 
@@ -11,12 +13,14 @@ const app = express()
 
 // *************************** connect mongo *************************** 
 mongoose.connect(dbURI,
-    { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }
+    { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
     () => console.log('Mongo is connected'))
     .catch(err => console.log(err)
 )
 
 // *************************** middlewhare *************************** 
+// app.use(cors)
+
 app.use(bodyParser.json())
 
 app.use((req, res, next) => {
@@ -28,7 +32,19 @@ app.use((req, res, next) => {
 
 
 // *************************** app ***************************
+app.get('/', (req, res) => {
+  res.send('it\'s working')
+})
 
+app.post('/all-terms', termsControler.create)
+
+app.get('/all-terms', termsControler.readAll)
+
+app.get('/all-terms/:id', termsControler.readOne)
+
+app.put('/all-terms/:id', termsControler.update)
+
+app.delete('/all-terms/:id', termsControler.remove)
 
 
 
