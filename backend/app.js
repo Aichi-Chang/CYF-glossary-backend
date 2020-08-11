@@ -22,7 +22,7 @@ mongoose.connect(dbURI,
 )
 
 // *************************** middlewhare *************************** 
-// app.use(cors)
+app.use(cors())
 
 app.use(bodyParser.json())
 
