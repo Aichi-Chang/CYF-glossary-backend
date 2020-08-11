@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "nodemon backend/app.js",
     "seeds": "node backend/db/seeds.js",
-    "start": "node index"
+    "start": "node backend/app.js"
   },
   "repository": {
     "type": "git",
@@ -31,5 +31,8 @@
     "mongoose": "^5.9.28",
     "mongoose-unique-validator": "^2.0.3",
     "nodemon": "^2.0.4"
+  },
+  "engines": {
+    "node": "^10 || ^12 || ^14"
   }
 }
