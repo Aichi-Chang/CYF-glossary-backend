@@ -5,7 +5,7 @@ const mongoose = require('mongoose')
 
 const { port, dbURI } = require('./config/dev')
 
-const termsControler = require('./controllers/termsControl')
+const terms = require('./controllers/terms')
 
 const app = express()
 
@@ -36,15 +36,15 @@ app.get('/', (req, res) => {
   res.send('it\'s working')
 })
 
-app.post('/all-terms', termsControler.create)
+app.post('/all-terms', terms.create)
 
-app.get('/all-terms', termsControler.readAll)
+app.get('/all-terms', terms.readAll)
 
-app.get('/all-terms/:id', termsControler.readOne)
+app.get('/all-terms/:id', terms.readOne)
 
-app.put('/all-terms/:id', termsControler.update)
+app.put('/all-terms/:id', terms.update)
 
-app.delete('/all-terms/:id', termsControler.remove)
+app.delete('/all-terms/:id', terms.remove)
 
 
 
