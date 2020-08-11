@@ -1,8 +1,9 @@
 function userControl(...allowed) {
+  
   const isAllowed = role => allowed.indexOf(role) > -1
 
   return function(req, res, next) {
-    if (req.currentUser && isAllowed(req.currentUser.role)) {
+    if (req.curUser && isAllowed(req.curUser.role)) {
       next()
     } else {
       res.status(403).json({ message: 'access denied' })
@@ -13,4 +14,4 @@ function userControl(...allowed) {
 
 
 
-module.exports = useControl
+module.exports = userControl

@@ -48,7 +48,7 @@ userSchema
 
 userSchema
   .pre('validate', function checkPassowrd(next) {
-    if (this._passwordConfirmation !== this.password) {
+    if (this.isModified('password') && this._passwordConfirmation !== this.password) {
       this.invalidate('passwordConfirmation', 'Your Password Confirmaiotn Does Not Match')
     }
     next()
@@ -57,8 +57,8 @@ userSchema
  
 userSchema
   .pre('save', function hashPassword(next) {
-    if(this.password) {
-      this.password = bcypt.hashSync(this.password, bcrypt.genSaltSync(8))
+    if(this.isModified('password')) {
+      this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync(8))
     }
     next()
   })

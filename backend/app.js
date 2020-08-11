@@ -6,6 +6,9 @@ const mongoose = require('mongoose')
 const { port, dbURI } = require('./config/dev')
 
 const term = require('./controllers/term')
+const user = require('./controllers/user')
+const secureRoute = require('./lib/secureRoute')
+const userControl = require('./lib/userControl')
 
 const app = express()
 
@@ -26,7 +29,7 @@ app.use(bodyParser.json())
 app.use((req, res, next) => {
   console.log(`${req.method} to ${req.url}`)
   res.header('Access-Control-Allow-Origin', '*')
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With', 'Content-Type', 'Accept')
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
   next()
 })
 
@@ -42,11 +45,17 @@ app.get('/all-terms', term.readAll)
 
 app.get('/all-terms/:id', term.readOne)
 
-app.put('/all-terms/:id', term.update)
+app.put('/all-terms/:id', secureRoute, userControl('admin', 'mentor'), term.update)
 
-app.delete('/all-terms/:id', term.remove)
+app.delete('/all-terms/:id', secureRoute, userControl('admin', 'mentor'), term.remove)
 
+app.post('/register', user.register)
 
+app.post('/login', user.login)
+
+app.get('/users', secureRoute, userControl('admin'), user.allUsers)
+
+app.get('/users/:id', secureRoute, userControl('admin'), user.oneUser)
 
 
 // *************************** listen to port ***************************
