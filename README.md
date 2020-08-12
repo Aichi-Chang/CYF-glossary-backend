@@ -5,47 +5,47 @@
 ## All available end points
 
 ### GET - Read all the terms
-https://cyf-glossary-backend.herokuapp.com/all-terms
+* https://cyf-glossary-backend.herokuapp.com/all-terms
 
 
 ### POST - Create a term 
-https://cyf-glossary-backend.herokuapp.com/all-terms
+* https://cyf-glossary-backend.herokuapp.com/all-terms
 
 
 ### GET - Read a single term
-https://cyf-glossary-backend.herokuapp.com/all-terms/:id
+* https://cyf-glossary-backend.herokuapp.com/all-terms/:id
 
 
 ### PUT - Update a term 
 1. Can only be performed by admin and mentor roles
 2. User will need to register and logged in
-https://cyf-glossary-backend.herokuapp.com/all-terms/:id
+* https://cyf-glossary-backend.herokuapp.com/all-terms/:id
 
 
 ### DELETE - remove a term
 1. Can only be performed by admin and mentor roles
 2. User will need to register and logged in
-https://cyf-glossary-backend.herokuapp.com/all-terms/:id
+* https://cyf-glossary-backend.herokuapp.com/all-terms/:id
 
 
 ### POST - User registration
-https://cyf-glossary-backend.herokuapp.com/register
+* https://cyf-glossary-backend.herokuapp.com/register
 
 
 ### POST - User login
-https://cyf-glossary-backend.herokuapp.com/login
+* https://cyf-glossary-backend.herokuapp.com/login
 
 
 ### GET - Read all users
 1. Can only be performed by admin role
 2. User will need to register and logged in
-https://cyf-glossary-backend.herokuapp.com/users
+* https://cyf-glossary-backend.herokuapp.com/users
 
 
 ### GET - Read a single user
 1. Can only be performed by admin role
 2. User will need to register and logged in
-https://cyf-glossary-backend.herokuapp.com/users/:id
+* https://cyf-glossary-backend.herokuapp.com/users/:id
 
 
 ---
