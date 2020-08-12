@@ -85,6 +85,6 @@ fetch(url, {
 
 ## Seeds
 
-1. We've also created seeds in the data base. So depending on the roles, you will be able to perform specific tasks (e.g. delete terms or get to read all users in the database)
+1. We also created seeds in the database. So depending on the roles, you will be able to perform specific tasks (e.g. delete terms or get to read all users in the database)
 
 2. Check it out at backend/db/seeds.js and backend/db/userSeeds.js
