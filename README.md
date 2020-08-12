@@ -56,8 +56,7 @@
 
 2. To keep it simple. You will then need to create a *lib* folder and a file called *auth.js* in the frontend to save the token in your local storage.
 
-3. The auth.js files looks like this
-```js```
+3. The auth.js files looks like this (Not sure if we should give it to the students without explaination)
 
 4. So now you have the token saved in your local storage (You can check it out in the browser inspect -> Application -> Storage -> Local Storage). When calling a secure route, you will need to enclose this token with fetch method. It could looks like this:
 ```js
