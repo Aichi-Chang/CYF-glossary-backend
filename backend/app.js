@@ -46,11 +46,7 @@ app.get('/all-terms', term.readAll)
 
 app.get('/all-terms/:id', term.readOne)
 
-app.put('/all-terms/:id',[
-  check('name').trim().escape(),
-  check('discription').trim().escape(),
-  check('link').trim().escape()
-], term.update)
+app.put('/all-terms/:id', term.update)
 
 app.delete('/all-terms/:id', term.remove)
 

@@ -7,7 +7,7 @@ const termsSchema = new Schema({
   name: { type: String },
   discription: { type: String },
   link: { type: String },
-  author: { type: Schema.Types.Object, ref: Users, requrired: true }
+  tags: [{ type: String }]
 })
 
 

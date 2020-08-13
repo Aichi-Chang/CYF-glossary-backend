@@ -30,18 +30,10 @@ function update(req, res) {
     .findById(req.params.id)
     .then((ters) => {
       if(!ters) return res.status(404).json({ message: 'Term Not Found' })
-
-      // if(ters.author.email !== req.curUser.email && req.curUser.role !== 'admin' && req.curUser.role !== 'mentor') {
-      //   return res.status(403).json({ message: 'You Have No Access To Update This Term' })
-      // } else {
-        ters.set(req.body)
-        ters.save()
-      // }
-
-      return res.status(202).json(ters)
+      return ters.set(req.body)
     })
-    // .then(ters => ters.save())
-    // .then(ters => res.status(202).json(ters))
+    .then(ters => ters.save())
+    .then(ters => res.status(202).json(ters))
     .catch(err => res.json(err))
 }
 
