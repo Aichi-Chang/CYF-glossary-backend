@@ -46,6 +46,8 @@ app.get('/all-terms', term.readAll)
 
 app.get('/all-terms/:id', term.readOne)
 
+app.get('/tags/:tags', term.findByTags)
+
 app.put('/all-terms/:id', term.update)
 
 app.delete('/all-terms/:id', term.remove)

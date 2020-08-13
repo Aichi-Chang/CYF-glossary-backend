@@ -25,6 +25,18 @@ function readOne(req, res) {
     .catch(err => res.json(err))
 }
 
+
+function findByTags(req, res) {
+  Terms
+    .find({ tags: req.params.tags })
+    .then(ters => {
+      if(!ters) return res.status(404).json({ message: 'Term Not Found' })
+      return ters => res.status(200).json(ters)
+    })
+    .catch(err => res.json(err))
+}
+
+
 function update(req, res) {
   Terms
     .findById(req.params.id)
@@ -60,6 +72,7 @@ module.exports = {
   create,
   readOne,
   readAll,
+  findByTags,
   update,
   remove
 }
