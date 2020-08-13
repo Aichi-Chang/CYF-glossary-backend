@@ -28,17 +28,17 @@ function readOne(req, res) {
 function update(req, res) {
   Terms
     .findById(req.params.id)
-    .then(async (ters) => {
+    .then((ters) => {
       if(!ters) return res.status(404).json({ message: 'Term Not Found' })
 
-      if(ters.author.email !== req.curUser.email && req.curUser.role !== 'admin' && req.curUser.role !== 'mentor') {
-        return res.status(403).json({ message: 'You Have No Access To Update This Term' })
-      } else {
-        await ters.set(req.body)
-        await ters.save()
-      }
+      // if(ters.author.email !== req.curUser.email && req.curUser.role !== 'admin' && req.curUser.role !== 'mentor') {
+      //   return res.status(403).json({ message: 'You Have No Access To Update This Term' })
+      // } else {
+        ters.set(req.body)
+        ters.save()
+      // }
 
-      res.status(202).json(ters)
+      return res.status(202).json(ters)
     })
     // .then(ters => ters.save())
     // .then(ters => res.status(202).json(ters))
@@ -53,9 +53,9 @@ function remove(req, res) {
     .then((ters) => {
       if (!ters) return res.status(404).json({ message: 'Term Not Found' })
 
-      if(ters.author.email !== req.curUser.email && req.curUser.role !== 'admin' && req.curUser.role !== 'mentor') {
-        return res.status(403).json({ message: 'You Have No Access To Delete This Term' })
-      }
+      // if(ters.author.email !== req.curUser.email && req.curUser.role !== 'admin' && req.curUser.role !== 'mentor') {
+      //   return res.status(403).json({ message: 'You Have No Access To Delete This Term' })
+      // }
 
       return ters.remove()
     })

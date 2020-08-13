@@ -1,4 +1,4 @@
-const { check, validationResult } = require('express-validator')
+const { validationResult } = require('express-validator')
 const jwt = require('jsonwebtoken')
 
 const Users = require('../models/Users')
@@ -7,12 +7,12 @@ const { secret } = require('../config/dev')
 
 function register(req, res) {
   const errors = validationResult(req)
-  if(!errors.isEmpty()) return res.status(422).json({ errors: errors.array() })
+  if (!errors.isEmpty()) return res.status(422).json({ errors: errors.array() })
   
   Users
     .create(req.body)
     .then(user => res.status(200).json({ message: `One User Created, Hello ${user.username}!`}))
-    .catch(err => console.log(err))
+    .catch(err => res.status(422).json(err))
 }
 
 
@@ -27,7 +27,7 @@ function login(req, res) {
       const token = jwt.sign({ sub: user._id }, secret, { expiresIn: '12h' })
       res.status(202).json({ message: `Hello Again, ${user.username}`, token, user})
     })
-    .catch(err => console.log(err))
+    .catch(err => res.json(err))
 }
 
 

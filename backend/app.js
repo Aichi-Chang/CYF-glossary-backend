@@ -2,6 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
+const { check } = require('express-validator')
 
 const { port, dbURI } = require('./config/dev')
 
@@ -45,17 +46,29 @@ app.get('/all-terms', term.readAll)
 
 app.get('/all-terms/:id', term.readOne)
 
-app.put('/all-terms/:id', secureRoute, userControl('admin', 'mentor'), term.update)
+app.put('/all-terms/:id',[
+  check('name').trim().escape(),
+  check('discription').trim().escape(),
+  check('link').trim().escape()
+], term.update)
 
-app.delete('/all-terms/:id', secureRoute, userControl('admin', 'mentor'), term.remove)
+app.delete('/all-terms/:id', term.remove)
 
-app.post('/register', user.register)
+app.post('/register', [
+  check('username').not().isEmpty().trim().escape(),
+  check('email').isEmail().normalizeEmail(),
+  check('password').isLength({ min: 6 }).trim().escape()
+], user.register)
 
-app.post('/login', user.login)
+app.post('/login', [
+  check('username').not().isEmpty().trim().escape(),
+  check('email').isEmail().normalizeEmail(),
+  check('password').isLength({ min: 6 }).trim().escape()
+], user.login)
 
-app.get('/users', secureRoute, userControl('admin'), user.allUsers)
+app.get('/users', user.allUsers)
 
-app.get('/users/:id', secureRoute, userControl('admin'), user.oneUser)
+app.get('/users/:id', user.oneUser)
 
 
 // *************************** listen to port ***************************

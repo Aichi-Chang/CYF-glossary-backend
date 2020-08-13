@@ -33,7 +33,7 @@ const userSchema = new Schema({
   }
 })
 
-userSchema.plugin(uniqueValidator)
+userSchema.plugin(uniqueValidator, { message: 'Error, expected {PATH} to be unique.' })
 
 
 userSchema
@@ -53,6 +53,7 @@ userSchema
     }
     next()
   })
+
 
  
 userSchema
