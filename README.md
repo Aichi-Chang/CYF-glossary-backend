@@ -39,6 +39,17 @@
 
 ---
 
+## Before creating a term
+
+1. Please be careful about the fields set up in the server. We currently have *names*, *discription*, *link* and *tags* fields. Though this can be modified while our application grows.
+
+2. If you create a term with fields that is not include in the server schema, it will then not be saved into the database.
+
+3. To check out *current available fields* and the *type of data* you should enter when POST a new term. Go to backend -> models -> Terms.js
+
+
+---
+
 ## Seeds
 
 1. We also created seeds in the database. So you have a few terms to start with. The seeds data contains *names*, *discription*, *link* and *tags*
