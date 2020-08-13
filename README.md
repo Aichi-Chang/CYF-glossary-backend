@@ -24,7 +24,7 @@
 * https://cyf-glossary-backend.herokuapp.com/all-terms/:id
 
 
-## GET - Find terms by Tags
+### GET - Find terms by Tags
 * https://cyf-glossary-backend.herokuapp.com/tags/:id
 
 
