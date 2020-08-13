@@ -26,12 +26,12 @@ function readOne(req, res) {
 }
 
 
+
 function findByTags(req, res) {
   Terms
-    .find({ tags: req.params.tags })
+    .find({ tags: req.params.id })
     .then(ters => {
-      if(!ters) return res.status(404).json({ message: 'Term Not Found' })
-      return ters => res.status(200).json(ters)
+      return res.status(200).json(ters)
     })
     .catch(err => res.json(err))
 }
