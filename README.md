@@ -47,6 +47,8 @@
 
 3. To check out *current available fields* and the *type of data* you should enter when POST a new term. Go to backend -> models -> Terms.js
 
+4. There are certain fields that are required and they must be unique, please check the schema in backend/models/Terms.js.
+
 
 ---
 
