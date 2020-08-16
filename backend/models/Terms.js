@@ -13,6 +13,6 @@ const termsSchema = new Schema({
   tags: [{ type: String }],
 });
 
-userSchema.plugin(uniqueValidator, { message: 'Error, expected {PATH} to be unique.' })
+termsSchema.plugin(uniqueValidator, { message: `Error, expected ${PATH} to be unique.` })
 
 module.exports = mongoose.model("Terms", termsSchema);
