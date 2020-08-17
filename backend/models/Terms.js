@@ -8,7 +8,7 @@ const Schema = mongoose.Schema;
 const termsSchema = new Schema({
   // id: { type: Number, unique: true, required: true },
   name: { type: String, required: true, unique: true },
-  discription: { type: String },
+  description: { type: String },
   link: { type: String },
   tags: [{ type: String }],
 });
