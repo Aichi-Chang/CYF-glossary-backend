@@ -68,6 +68,8 @@ app.get('/users', user.allUsers)
 
 app.get('/users/:id', user.oneUser)
 
+app.use('/*', (req, res) => res.status(404).json({ message: 'Not Found' }))
+
 
 // *************************** listen to port ***************************
 app.listen(port, () => console.log(`Up and running on port ${port}`))
