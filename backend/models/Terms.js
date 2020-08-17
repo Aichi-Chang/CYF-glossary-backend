@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Users = require("./Users");
 const uniqueValidator = require('mongoose-unique-validator')
 
 
@@ -9,7 +10,7 @@ const termsSchema = new Schema({
   name: { type: String, required: true, unique: true },
   discription: { type: String },
   link: { type: String },
-  tags: [{ type: String }]
+  tags: [{ type: String }],
 });
 
 termsSchema.plugin(uniqueValidator)

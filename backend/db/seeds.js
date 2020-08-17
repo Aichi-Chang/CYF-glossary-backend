@@ -25,7 +25,7 @@ mongoose.connect(
             name: 'http 300 Multiple Choices',
             discription: 'The HTTP 300 Multiple Choices redirect status response code indicates that the request has more than one possible responses. The user-agent or the user should choose one of them. As there is no standardized way of choosing one of the responses, this response code is very rarely used.',
             link: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/300',
-            tags: ['http', 'stauts'] 
+            tags: ['http', 'stauts']
           }, {
             name: 'http 401 Unauthorized',
             discription: 'The HTTP 401 Unauthorized client error status response code indicates that the request has not been applied because it lacks valid authentication credentials for the target resource.',
