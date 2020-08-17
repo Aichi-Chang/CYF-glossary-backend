@@ -16,13 +16,19 @@ function readAll(req, res) {
 }
 
 function readOne(req, res) {
+  if(req.params.id.match(/^[0-9a-fA-F]{24}$/)) {
   Terms
-    .findById(req.params.id)
-    .then(ters => {
-      if (!ters) res.status(404).json({ message: 'Term Not Found' })
-      else res.status(200).json(ters)
-    })
-    .catch(err => res.json(err))
+      .findById(req.params.id)
+      .then(ters => {
+        if (!ters) res.status(404).json({ message: 'Term Not Found' })
+        else res.status(200).json(ters)
+      })
+      .catch(err => res.json(err))
+  } else {
+    return res.status(400).json({ message: 'Wrong ID Format / ID Does Not Exist'})
+  }
+
+  
 }
 
 
@@ -38,33 +44,40 @@ function findByTags(req, res) {
 
 
 function update(req, res) {
-  Terms
-    .findById(req.params.id)
-    .then((ters) => {
-      if(!ters) return res.status(404).json({ message: 'Term Not Found' })
-      return ters.set(req.body)
-    })
-    .then(ters => ters.save())
-    .then(ters => res.status(202).json(ters))
-    .catch(err => res.json(err))
+  if(req.params.id.match(/^[0-9a-fA-F]{24}$/)) {
+    Terms
+      .findById(req.params.id)
+      .then((ters) => {
+        if(!ters) return res.status(404).json({ message: 'Term Not Found' })
+        return ters.set(req.body)
+      })
+      .then(ters => ters.save())
+      .then(ters => res.status(202).json(ters))
+      .catch(err => res.json(err))
+  } else {
+    return res.status(400).json({ message: 'Wrong ID Format / ID Does Not Exist'})
+  }
 }
 
 
 function remove(req, res) {
+  if(req.params.id.match(/^[0-9a-fA-F]{24}$/)) {
+    Terms
+      .findById(req.params.id)
+      .then((ters) => {
+        if(!ters) res.status(404).json({ message: 'Term Not Found' })
 
-  Terms
-    .findById(req.params.id)
-    .then((ters) => {
-      if(!ters) res.status(404).json({ message: 'Term Not Found' })
+        // if(ters.author.email !== req.curUser.email && req.curUser.role !== 'admin' && req.curUser.role !== 'mentor') {
+        //   return res.status(403).json({ message: 'You Have No Access To Delete This Term' })
+        // }
 
-      // if(ters.author.email !== req.curUser.email && req.curUser.role !== 'admin' && req.curUser.role !== 'mentor') {
-      //   return res.status(403).json({ message: 'You Have No Access To Delete This Term' })
-      // }
-
-      return ters.remove()
-    })
-    .then(() => res.status(200).json({ message: 'Term Deleted' }))
-    .catch(err => res.json(err))
+        return ters.remove()
+      })
+      .then(() => res.status(200).json({ message: 'Term Deleted' }))
+      .catch(err => res.json(err))
+  } else {
+    return res.status(400).json({ message: 'Wrong ID Format / ID Does Not Exist'})
+  }
 }
 
 
