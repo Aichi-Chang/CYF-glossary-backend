@@ -57,3 +57,12 @@
 1. We also created seeds in the database. So you have a few terms to start with. The seeds data contains *names*, *description*, *link* and *tags*
 
 2. Check it out at backend/db/seeds.js and backend/db/userSeeds.js
+
+
+---
+
+## Endpoints on Insomnia
+
+![Get All Terms](backend/assets/get-all-terms.png)
+![Get All Terms](backend/assets/get-all-terms.png)
+![Get All Terms](backend/assets/get-all-terms.png)
