@@ -9,7 +9,8 @@ const termsSchema = new Schema({
   // id: { type: Number, unique: true, required: true },
   name: { type: String, required: true, unique: true },
   description: { type: String },
-  links: [{ type: String }],
+  link1: { type: String },
+  link2: { type: String },
   tags: [{ type: String }],
 });
 
